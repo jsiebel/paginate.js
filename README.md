@@ -23,6 +23,42 @@ paginate(myTableNode);
 ```
 If you want header or footer rows to always show, put them in appropriate tags (```<thead>``` and ```<tfoot>```).
 
+## Configuration
+
+You can change the following default settings applied to the tables:
+
+### perPage
+The number of rows of a table that is displayed at once. The default is ```20```.
+
+### navigationAbove
+Controls if the navigation is shown above the table. The default value is ```false```.
+
+### navigationBelow
+Controls if the navigation is shown below the table. The default value is ```true```.
+
+### navigation
+The html structure of the navigation.
+
+## Applying the configuration
+
+There are three ways to change the settings:
+
+1. Change the default configuration in the ```pagination.config``` object. All tables that are changed afterwards use
+these settings, but not the ones already paginated.
+```js
+pagination.config.perPage = 10;
+```
+2. Add a data attribute to the table. Only that table is affected.
+```html
+<table class="paginated" data-paginate="{&quot;navigationAbove&quot; : true}">
+...
+</table>
+```
+3. When paginating after load using with the ```paginate``` method, use the ```config``` parameter. Again, only that
+table is affected.
+```js
+paginate(myTableNode, {navigationBelow : false});
+```
 ## License
 
 [MIT License](LICENSE)

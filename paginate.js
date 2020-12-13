@@ -7,33 +7,35 @@
 "use strict";
 
 let pagination = {
-	/** The number of rows of a table that is displayed at once. */
-	perPage : 20,
-	
-	/** Controls if the navigation is shown above the table. */
-	navigationAbove : false,
-	
-	/** Controls if the navigation is shown below the table. */
-	navigationBelow : true,
-	
-	/** The structure of the navigation. */
-	navigation : `
-		<button data-target="current-1">◄ back</button>
-		<span class="pagenumbers">
-			<button data-target="first+0" data-limit="2">#</button>
-			<button data-target="first+1" data-limit="3">#</button>
-			<span data-limit="4">…</span>
-			<button data-target="current-1" data-limit="1">#</button>
-			<button data-target="current+0" data-limit="0">#</button>
-			<button data-target="current+1" data-limit="-1">#</button>
-			<span data-limit="-4">…</span>
-			<button data-target="last-1" data-limit="-3">#</button>
-			<button data-target="last-0" data-limit="-2">#</button>
-		</span>
-		<button data-target="current+1">next ►</button>
-		<br />
-		<a data-page="all">(show all)</a>
-		`,
+	config : {
+		/** The number of rows of a table that is displayed at once. */
+		perPage : 20,
+		
+		/** Controls if the navigation is shown above the table. */
+		navigationAbove : false,
+		
+		/** Controls if the navigation is shown below the table. */
+		navigationBelow : true,
+		
+		/** The structure of the navigation. */
+		navigation : `
+			<button data-target="current-1">◄ back</button>
+			<span class="pagenumbers">
+				<button data-target="first+0" data-limit="2">#</button>
+				<button data-target="first+1" data-limit="3">#</button>
+				<span data-limit="4">…</span>
+				<button data-target="current-1" data-limit="1">#</button>
+				<button data-target="current+0" data-limit="0">#</button>
+				<button data-target="current+1" data-limit="-1">#</button>
+				<span data-limit="-4">…</span>
+				<button data-target="last-1" data-limit="-3">#</button>
+				<button data-target="last-0" data-limit="-2">#</button>
+			</span>
+			<button data-target="current+1">next ►</button>
+			<br />
+			<a data-page="all">(show all)</a>
+			`,
+	},
 	
 	initialize : function(){
 		let style = document.createElement('style');
@@ -48,27 +50,37 @@ let pagination = {
 	
 	nextTableIndex : 0,
 	
-	add : function(table){
-		if (table.querySelector('tbody').children.length > pagination.perPage){
+	add : function(table, config = {}){
+		config = Object.assign({},
+				pagination.config,
+				JSON.parse(table.dataset.paginate || "{}"),
+				config
+		);
+		if (!pagination.isPaginated(table) && table.querySelector('tbody').children.length > config.perPage){
 			let tableIndex = pagination.nextTableIndex++;
 			let identifier = 'paginated-' + tableIndex;
 			table.classList.add(identifier);
+			pagination[identifier] = config;
 			table.dataset.paginateIndex = tableIndex;
-			if (pagination.navigationAbove){
+			if (config.navigationAbove){
 				table.parentNode.insertBefore(pagination.createNavigation(identifier), table);
 			}
-			if (pagination.navigationBelow){
+			if (config.navigationBelow){
 				table.parentNode.insertBefore(pagination.createNavigation(identifier), table.nextSibling);
 			}
 			pagination.setPage(identifier, '0');
 		}
 	},
 	
+	isPaginated : function(table){
+		return table.className.includes('paginated-');
+	},
+	
 	createNavigation : function(identifier){
 		let p = document.createElement('p');
 		p.classList.add('paginateControls');
 		p.classList.add(identifier);
-		p.innerHTML = pagination.navigation;
+		p.innerHTML = pagination[identifier].navigation;
 		p.dataset.table = identifier;
 		p.addEventListener('click', pagination.processEvent);
 		return p;
@@ -94,8 +106,8 @@ let pagination = {
 		}else{
 			let currentPage = parseInt(position);
 			rule = `
-				table.${identifier} tbody tr:nth-child(-n+${pagination.perPage*currentPage}),
-				table.${identifier} tbody tr:nth-child(n+${pagination.perPage*(currentPage+1)+1}){
+				table.${identifier} tbody tr:nth-child(-n+${pagination[identifier].perPage*currentPage}),
+				table.${identifier} tbody tr:nth-child(n+${pagination[identifier].perPage*(currentPage+1)+1}){
 					display:none
 				}`;
 			pagination.updateControls(identifier, currentPage);
@@ -109,7 +121,7 @@ let pagination = {
 	updateControls : function(identifier, currentPage){
 		let table = document.querySelector(`table.${identifier}`);
 		let nItems = table.querySelector('tbody').children.length;
-		let lastPage = Math.ceil(nItems/pagination.perPage) - 1;
+		let lastPage = Math.ceil(nItems/pagination[identifier].perPage) - 1;
 		document.querySelectorAll(`p.${identifier} *`).forEach(node => {
 			if (node.dataset.target){
 				let match = node.dataset.target.match(/(first|current|last)(.*)/);
@@ -141,6 +153,6 @@ let pagination = {
 
 window.addEventListener("DOMContentLoaded", pagination.initialize);
 
-function paginate(table){
-	pagination.add(table);
+function paginate(table, config = {}){
+	pagination.add(table, config);
 }
