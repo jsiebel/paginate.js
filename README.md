@@ -1,5 +1,5 @@
 # paginate.js
-paginate.js is a lightweight javascript library that paginates tables and adds controls to navigate between pages. This is done client-side, so there's no need for additional server-side scripts. You can try some [examples here](https://jsiebel.github.io/paginate.js/demo.html).
+paginate.js is a lightweight javascript library that paginates tables and adds controls to navigate between pages. This is done client-side, so there's no need for additional server-side scripts. You can try some [examples here](https://jsiebel.github.io/paginate.js/demo).
 
 ## Installation
 Download the paginate.js file and include it in your website:
