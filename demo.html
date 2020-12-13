@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>paginate.js Demo</title>
+<style>
+p.paginateControls {
+	text-align: center;
+	width: 30em;
+	margin: 0.2em auto;
+}
+p.paginateControls span.pagenumbers{
+	display: inline-block;
+	min-width: 20em;
+}
+body {
+	max-width: 55em;
+	margin: auto;
+}
+table {
+	border: 2px solid;
+	border-collapse: collapse;
+	background: #e3f9fc;
+	margin: 0 auto;
+	color: #2d4f41;
+}
+th, td {
+	text-align: left;
+	border: 2px solid grey;
+	padding: 0.2em 0.5em;
+}
+th{
+	background: #e3ecfc;
+}
+</style>
+<script src="paginate.js"></script>
+</head>
+<body>
+<p>This page shows a few examples of how to use <a href="https://github.com/jsiebel/paginate.js">paginate.js</a>.
+<h1>Paginated table</h1>
+<p>This table has the class &quot;<code>paginated</code>&quot;. You can navigate through its 200 rows using
+the buttons below it. The table's header and footer stay in place when navigating, as they are enclosed in
+<code>&lt;thead&gt;</code> and <code>&lt;tfoot&gt;</code> tags.</p>
+<table class="paginated">
+<thead><tr><th>Number</th><th>Square root</th><th>Cube root</th></tr></thead>
+<tbody>
+<tr><td>one</td><td>one</td><td>one</td></tr>
+<tr><td>two</td><td>one point four one four</td><td>one point two six</td></tr>
+<tr><td>three</td><td>one point seven three two</td><td>one point four four two</td></tr>
+<tr><td>four</td><td>two</td><td>one point five eight seven</td></tr>
+<tr><td>five</td><td>two point two three six</td><td>one point seven one</td></tr>
+<tr><td>six</td><td>two point four four nine</td><td>one point eight one seven</td></tr>
+<tr><td>seven</td><td>two point six four six</td><td>one point nine one three</td></tr>
+<tr><td>eight</td><td>two point eight two eight</td><td>two</td></tr>
+<tr><td>nine</td><td>three</td><td>two point zero eight</td></tr>
+<tr><td>ten</td><td>three point one six two</td><td>two point one five four</td></tr>
+<tr><td>eleven</td><td>three point three one seven</td><td>two point two two four</td></tr>
+<tr><td>twelve</td><td>three point four six four</td><td>two point two eight nine</td></tr>
+<tr><td>thirteen</td><td>three point six zero six</td><td>two point three five one</td></tr>
+<tr><td>fourteen</td><td>three point seven four two</td><td>two point four one</td></tr>
+<tr><td>fifteen</td><td>three point eight seven three</td><td>two point four six six</td></tr>
+<tr><td>sixteen</td><td>four</td><td>two point five two</td></tr>
+<tr><td>seventeen</td><td>four point one two three</td><td>two point five seven one</td></tr>
+<tr><td>eighteen</td><td>four point two four three</td><td>two point six two one</td></tr>
+<tr><td>nineteen</td><td>four point three five nine</td><td>two point six six eight</td></tr>
+<tr><td>twenty</td><td>four point four seven two</td><td>two point seven one four</td></tr>
+<tr><td>twenty-one</td><td>four point five eight three</td><td>two point seven five nine</td></tr>
+<tr><td>twenty-two</td><td>four point six nine</td><td>two point eight zero two</td></tr>
+<tr><td>twenty-three</td><td>four point seven nine six</td><td>two point eight four four</td></tr>
+<tr><td>twenty-four</td><td>four point eight nine nine</td><td>two point eight eight four</td></tr>
+<tr><td>twenty-five</td><td>five</td><td>two point nine two four</td></tr>
+<tr><td>twenty-six</td><td>five point zero nine nine</td><td>two point nine six two</td></tr>
+<tr><td>twenty-seven</td><td>five point one nine six</td><td>three</td></tr>
+<tr><td>twenty-eight</td><td>five point two nine two</td><td>three point zero three seven</td></tr>
+<tr><td>twenty-nine</td><td>five point three eight five</td><td>three point zero seven two</td></tr>
+<tr><td>thirty</td><td>five point four seven seven</td><td>three point one zero seven</td></tr>
+<tr><td>thirty-one</td><td>five point five six eight</td><td>three point one four one</td></tr>
+<tr><td>thirty-two</td><td>five point six five seven</td><td>three point one seven five</td></tr>
+<tr><td>thirty-three</td><td>five point seven four five</td><td>three point two zero eight</td></tr>
+<tr><td>thirty-four</td><td>five point eight three one</td><td>three point two four</td></tr>
+<tr><td>thirty-five</td><td>five point nine one six</td><td>three point two seven one</td></tr>
+<tr><td>thirty-six</td><td>six</td><td>three point three zero two</td></tr>
+<tr><td>thirty-seven</td><td>six point zero eight three</td><td>three point three three two</td></tr>
+<tr><td>thirty-eight</td><td>six point one six four</td><td>three point three six two</td></tr>
+<tr><td>thirty-nine</td><td>six point two four five</td><td>three point three nine one</td></tr>
+<tr><td>fourty</td><td>six point three two five</td><td>three point four two</td></tr>
+<tr><td>fourty-one</td><td>six point four zero three</td><td>three point four four eight</td></tr>
+<tr><td>fourty-two</td><td>six point four eight one</td><td>three point four seven six</td></tr>
+<tr><td>fourty-three</td><td>six point five five seven</td><td>three point five zero three</td></tr>
+<tr><td>fourty-four</td><td>six point six three three</td><td>three point five three</td></tr>
+<tr><td>fourty-five</td><td>six point seven zero eight</td><td>three point five five seven</td></tr>
+<tr><td>fourty-six</td><td>six point seven eight two</td><td>three point five eight three</td></tr>
+<tr><td>fourty-seven</td><td>six point eight five six</td><td>three point six zero nine</td></tr>
+<tr><td>fourty-eight</td><td>six point nine two eight</td><td>three point six three four</td></tr>
+<tr><td>fourty-nine</td><td>seven</td><td>three point six five nine</td></tr>
+<tr><td>fifty</td><td>seven point zero seven one</td><td>three point six eight four</td></tr>
+<tr><td>fifty-one</td><td>seven point one four one</td><td>three point seven zero eight</td></tr>
+<tr><td>fifty-two</td><td>seven point two one one</td><td>three point seven three three</td></tr>
+<tr><td>fifty-three</td><td>seven point two eight</td><td>three point seven five six</td></tr>
+<tr><td>fifty-four</td><td>seven point three four eight</td><td>three point seven eight</td></tr>
+<tr><td>fifty-five</td><td>seven point four one six</td><td>three point eight zero three</td></tr>
+<tr><td>fifty-six</td><td>seven point four eight three</td><td>three point eight two six</td></tr>
+<tr><td>fifty-seven</td><td>seven point five five</td><td>three point eight four nine</td></tr>
+<tr><td>fifty-eight</td><td>seven point six one six</td><td>three point eight seven one</td></tr>
+<tr><td>fifty-nine</td><td>seven point six eight one</td><td>three point eight nine three</td></tr>
+<tr><td>sixty</td><td>seven point seven four six</td><td>three point nine one five</td></tr>
+<tr><td>sixty-one</td><td>seven point eight one</td><td>three point nine three six</td></tr>
+<tr><td>sixty-two</td><td>seven point eight seven four</td><td>three point nine five eight</td></tr>
+<tr><td>sixty-three</td><td>seven point nine three seven</td><td>three point nine seven nine</td></tr>
+<tr><td>sixty-four</td><td>eight</td><td>four</td></tr>
+<tr><td>sixty-five</td><td>eight point zero six two</td><td>four point zero two one</td></tr>
+<tr><td>sixty-six</td><td>eight point one two four</td><td>four point zero four one</td></tr>
+<tr><td>sixty-seven</td><td>eight point one eight five</td><td>four point zero six two</td></tr>
+<tr><td>sixty-eight</td><td>eight point two four six</td><td>four point zero eight two</td></tr>
+<tr><td>sixty-nine</td><td>eight point three zero seven</td><td>four point one zero two</td></tr>
+<tr><td>seventy</td><td>eight point three six seven</td><td>four point one two one</td></tr>
+<tr><td>seventy-one</td><td>eight point four two six</td><td>four point one four one</td></tr>
+<tr><td>seventy-two</td><td>eight point four eight five</td><td>four point one six</td></tr>
+<tr><td>seventy-three</td><td>eight point five four four</td><td>four point one seven nine</td></tr>
+<tr><td>seventy-four</td><td>eight point six zero two</td><td>four point one nine eight</td></tr>
+<tr><td>seventy-five</td><td>eight point six six</td><td>four point two one seven</td></tr>
+<tr><td>seventy-six</td><td>eight point seven one eight</td><td>four point two three six</td></tr>
+<tr><td>seventy-seven</td><td>eight point seven seven five</td><td>four point two five four</td></tr>
+<tr><td>seventy-eight</td><td>eight point eight three two</td><td>four point two seven three</td></tr>
+<tr><td>seventy-nine</td><td>eight point eight eight eight</td><td>four point two nine one</td></tr>
+<tr><td>eighty</td><td>eight point nine four four</td><td>four point three zero nine</td></tr>
+<tr><td>eighty-one</td><td>nine</td><td>four point three two seven</td></tr>
+<tr><td>eighty-two</td><td>nine point zero five five</td><td>four point three four four</td></tr>
+<tr><td>eighty-three</td><td>nine point one one</td><td>four point three six two</td></tr>
+<tr><td>eighty-four</td><td>nine point one six five</td><td>four point three eight</td></tr>
+<tr><td>eighty-five</td><td>nine point two two</td><td>four point three nine seven</td></tr>
+<tr><td>eighty-six</td><td>nine point two seven four</td><td>four point four one four</td></tr>
+<tr><td>eighty-seven</td><td>nine point three two seven</td><td>four point four three one</td></tr>
+<tr><td>eighty-eight</td><td>nine point three eight one</td><td>four point four four eight</td></tr>
+<tr><td>eighty-nine</td><td>nine point four three four</td><td>four point four six five</td></tr>
+<tr><td>ninety</td><td>nine point four eight seven</td><td>four point four eight one</td></tr>
+<tr><td>ninety-one</td><td>nine point five three nine</td><td>four point four nine eight</td></tr>
+<tr><td>ninety-two</td><td>nine point five nine two</td><td>four point five one four</td></tr>
+<tr><td>ninety-three</td><td>nine point six four four</td><td>four point five three one</td></tr>
+<tr><td>ninety-four</td><td>nine point six nine five</td><td>four point five four seven</td></tr>
+<tr><td>ninety-five</td><td>nine point seven four seven</td><td>four point five six three</td></tr>
+<tr><td>ninety-six</td><td>nine point seven nine eight</td><td>four point five seven nine</td></tr>
+<tr><td>ninety-seven</td><td>nine point eight four nine</td><td>four point five nine five</td></tr>
+<tr><td>ninety-eight</td><td>nine point eight nine nine</td><td>four point six one</td></tr>
+<tr><td>ninety-nine</td><td>nine point nine five</td><td>four point six two six</td></tr>
+<tr><td>one hundred</td><td>ten</td><td>four point six four two</td></tr>
+<tr><td>one hundred and one</td><td>ten point zero five</td><td>four point six five seven</td></tr>
+<tr><td>one hundred and two</td><td>ten point one</td><td>four point six seven two</td></tr>
+<tr><td>one hundred and three</td><td>ten point one four nine</td><td>four point six eight eight</td></tr>
+<tr><td>one hundred and four</td><td>ten point one nine eight</td><td>four point seven zero three</td></tr>
+<tr><td>one hundred and five</td><td>ten point two four seven</td><td>four point seven one eight</td></tr>
+<tr><td>one hundred and six</td><td>ten point two nine six</td><td>four point seven three three</td></tr>
+<tr><td>one hundred and seven</td><td>ten point three four four</td><td>four point seven four seven</td></tr>
+<tr><td>one hundred and eight</td><td>ten point three nine two</td><td>four point seven six two</td></tr>
+<tr><td>one hundred and nine</td><td>ten point four four</td><td>four point seven seven seven</td></tr>
+<tr><td>one hundred and ten</td><td>ten point four eight eight</td><td>four point seven nine one</td></tr>
+<tr><td>one hundred and eleven</td><td>ten point five three six</td><td>four point eight zero six</td></tr>
+<tr><td>one hundred and twelve</td><td>ten point five eight three</td><td>four point eight two</td></tr>
+<tr><td>one hundred and thirteen</td><td>ten point six three</td><td>four point eight three five</td></tr>
+<tr><td>one hundred and fourteen</td><td>ten point six seven seven</td><td>four point eight four nine</td></tr>
+<tr><td>one hundred and fifteen</td><td>ten point seven two four</td><td>four point eight six three</td></tr>
+<tr><td>one hundred and sixteen</td><td>ten point seven seven</td><td>four point eight seven seven</td></tr>
+<tr><td>one hundred and seventeen</td><td>ten point eight one seven</td><td>four point eight nine one</td></tr>
+<tr><td>one hundred and eighteen</td><td>ten point eight six three</td><td>four point nine zero five</td></tr>
+<tr><td>one hundred and nineteen</td><td>ten point nine zero nine</td><td>four point nine one nine</td></tr>
+<tr><td>one hundred and twenty</td><td>ten point nine five four</td><td>four point nine three two</td></tr>
+<tr><td>one hundred and twenty-one</td><td>eleven</td><td>four point nine four six</td></tr>
+<tr><td>one hundred and twenty-two</td><td>eleven point zero four five</td><td>four point nine six</td></tr>
+<tr><td>one hundred and twenty-three</td><td>eleven point zero nine one</td><td>four point nine seven three</td></tr>
+<tr><td>one hundred and twenty-four</td><td>eleven point one three six</td><td>four point nine eight seven</td></tr>
+<tr><td>one hundred and twenty-five</td><td>eleven point one eight</td><td>five</td></tr>
+<tr><td>one hundred and twenty-six</td><td>eleven point two two five</td><td>five point zero one three</td></tr>
+<tr><td>one hundred and twenty-seven</td><td>eleven point two six nine</td><td>five point zero two seven</td></tr>
+<tr><td>one hundred and twenty-eight</td><td>eleven point three one four</td><td>five point zero four</td></tr>
+<tr><td>one hundred and twenty-nine</td><td>eleven point three five eight</td><td>five point zero five three</td></tr>
+<tr><td>one hundred and thirty</td><td>eleven point four zero two</td><td>five point zero six six</td></tr>
+<tr><td>one hundred and thirty-one</td><td>eleven point four four six</td><td>five point zero seven nine</td></tr>
+<tr><td>one hundred and thirty-two</td><td>eleven point four eight nine</td><td>five point zero nine two</td></tr>
+<tr><td>one hundred and thirty-three</td><td>eleven point five three three</td><td>five point one zero four</td></tr>
+<tr><td>one hundred and thirty-four</td><td>eleven point five seven six</td><td>five point one one seven</td></tr>
+<tr><td>one hundred and thirty-five</td><td>eleven point six one nine</td><td>five point one three</td></tr>
+<tr><td>one hundred and thirty-six</td><td>eleven point six six two</td><td>five point one four three</td></tr>
+<tr><td>one hundred and thirty-seven</td><td>eleven point seven zero five</td><td>five point one five five</td></tr>
+<tr><td>one hundred and thirty-eight</td><td>eleven point seven four seven</td><td>five point one six eight</td></tr>
+<tr><td>one hundred and thirty-nine</td><td>eleven point seven nine</td><td>five point one eight</td></tr>
+<tr><td>one hundred and fourty</td><td>eleven point eight three two</td><td>five point one nine two</td></tr>
+<tr><td>one hundred and fourty-one</td><td>eleven point eight seven four</td><td>five point two zero five</td></tr>
+<tr><td>one hundred and fourty-two</td><td>eleven point nine one six</td><td>five point two one seven</td></tr>
+<tr><td>one hundred and fourty-three</td><td>eleven point nine five eight</td><td>five point two two nine</td></tr>
+<tr><td>one hundred and fourty-four</td><td>twelve</td><td>five point two four one</td></tr>
+<tr><td>one hundred and fourty-five</td><td>twelve point zero four two</td><td>five point two five four</td></tr>
+<tr><td>one hundred and fourty-six</td><td>twelve point zero eight three</td><td>five point two six six</td></tr>
+<tr><td>one hundred and fourty-seven</td><td>twelve point one two four</td><td>five point two seven eight</td></tr>
+<tr><td>one hundred and fourty-eight</td><td>twelve point one six six</td><td>five point two nine</td></tr>
+<tr><td>one hundred and fourty-nine</td><td>twelve point two zero seven</td><td>five point three zero one</td></tr>
+<tr><td>one hundred and fifty</td><td>twelve point two four seven</td><td>five point three one three</td></tr>
+<tr><td>one hundred and fifty-one</td><td>twelve point two eight eight</td><td>five point three two five</td></tr>
+<tr><td>one hundred and fifty-two</td><td>twelve point three two nine</td><td>five point three three seven</td></tr>
+<tr><td>one hundred and fifty-three</td><td>twelve point three six nine</td><td>five point three four eight</td></tr>
+<tr><td>one hundred and fifty-four</td><td>twelve point four one</td><td>five point three six</td></tr>
+<tr><td>one hundred and fifty-five</td><td>twelve point four five</td><td>five point three seven two</td></tr>
+<tr><td>one hundred and fifty-six</td><td>twelve point four nine</td><td>five point three eight three</td></tr>
+<tr><td>one hundred and fifty-seven</td><td>twelve point five three</td><td>five point three nine five</td></tr>
+<tr><td>one hundred and fifty-eight</td><td>twelve point five seven</td><td>five point four zero six</td></tr>
+<tr><td>one hundred and fifty-nine</td><td>twelve point six one</td><td>five point four one eight</td></tr>
+<tr><td>one hundred and sixty</td><td>twelve point six four nine</td><td>five point four two nine</td></tr>
+<tr><td>one hundred and sixty-one</td><td>twelve point six eight nine</td><td>five point four four</td></tr>
+<tr><td>one hundred and sixty-two</td><td>twelve point seven two eight</td><td>five point four five one</td></tr>
+<tr><td>one hundred and sixty-three</td><td>twelve point seven six seven</td><td>five point four six three</td></tr>
+<tr><td>one hundred and sixty-four</td><td>twelve point eight zero six</td><td>five point four seven four</td></tr>
+<tr><td>one hundred and sixty-five</td><td>twelve point eight four five</td><td>five point four eight five</td></tr>
+<tr><td>one hundred and sixty-six</td><td>twelve point eight eight four</td><td>five point four nine six</td></tr>
+<tr><td>one hundred and sixty-seven</td><td>twelve point nine two three</td><td>five point five zero seven</td></tr>
+<tr><td>one hundred and sixty-eight</td><td>twelve point nine six one</td><td>five point five one eight</td></tr>
+<tr><td>one hundred and sixty-nine</td><td>thirteen</td><td>five point five two nine</td></tr>
+<tr><td>one hundred and seventy</td><td>thirteen point zero three eight</td><td>five point five four</td></tr>
+<tr><td>one hundred and seventy-one</td><td>thirteen point zero seven seven</td><td>five point five five</td></tr>
+<tr><td>one hundred and seventy-two</td><td>thirteen point one one five</td><td>five point five six one</td></tr>
+<tr><td>one hundred and seventy-three</td><td>thirteen point one five three</td><td>five point five seven two</td></tr>
+<tr><td>one hundred and seventy-four</td><td>thirteen point one nine one</td><td>five point five eight three</td></tr>
+<tr><td>one hundred and seventy-five</td><td>thirteen point two two nine</td><td>five point five nine three</td></tr>
+<tr><td>one hundred and seventy-six</td><td>thirteen point two six six</td><td>five point six zero four</td></tr>
+<tr><td>one hundred and seventy-seven</td><td>thirteen point three zero four</td><td>five point six one five</td></tr>
+<tr><td>one hundred and seventy-eight</td><td>thirteen point three four two</td><td>five point six two five</td></tr>
+<tr><td>one hundred and seventy-nine</td><td>thirteen point three seven nine</td><td>five point six three six</td></tr>
+<tr><td>one hundred and eighty</td><td>thirteen point four one six</td><td>five point six four six</td></tr>
+<tr><td>one hundred and eighty-one</td><td>thirteen point four five four</td><td>five point six five seven</td></tr>
+<tr><td>one hundred and eighty-two</td><td>thirteen point four nine one</td><td>five point six six seven</td></tr>
+<tr><td>one hundred and eighty-three</td><td>thirteen point five two eight</td><td>five point six seven seven</td></tr>
+<tr><td>one hundred and eighty-four</td><td>thirteen point five six five</td><td>five point six eight eight</td></tr>
+<tr><td>one hundred and eighty-five</td><td>thirteen point six zero one</td><td>five point six nine eight</td></tr>
+<tr><td>one hundred and eighty-six</td><td>thirteen point six three eight</td><td>five point seven zero eight</td></tr>
+<tr><td>one hundred and eighty-seven</td><td>thirteen point six seven five</td><td>five point seven one eight</td></tr>
+<tr><td>one hundred and eighty-eight</td><td>thirteen point seven one one</td><td>five point seven two nine</td></tr>
+<tr><td>one hundred and eighty-nine</td><td>thirteen point seven four eight</td><td>five point seven three nine</td></tr>
+<tr><td>one hundred and ninety</td><td>thirteen point seven eight four</td><td>five point seven four nine</td></tr>
+<tr><td>one hundred and ninety-one</td><td>thirteen point eight two</td><td>five point seven five nine</td></tr>
+<tr><td>one hundred and ninety-two</td><td>thirteen point eight five six</td><td>five point seven six nine</td></tr>
+<tr><td>one hundred and ninety-three</td><td>thirteen point eight nine two</td><td>five point seven seven nine</td></tr>
+<tr><td>one hundred and ninety-four</td><td>thirteen point nine two eight</td><td>five point seven eight nine</td></tr>
+<tr><td>one hundred and ninety-five</td><td>thirteen point nine six four</td><td>five point seven nine nine</td></tr>
+<tr><td>one hundred and ninety-six</td><td>fourteen</td><td>five point eight zero nine</td></tr>
+<tr><td>one hundred and ninety-seven</td><td>fourteen point zero three six</td><td>five point eight one nine</td></tr>
+<tr><td>one hundred and ninety-eight</td><td>fourteen point zero seven one</td><td>five point eight two eight</td></tr>
+<tr><td>one hundred and ninety-nine</td><td>fourteen point one zero seven</td><td>five point eight three eight</td></tr>
+<tr><td>two hundred</td><td>fourteen point one four two</td><td>five point eight four eight</td></tr>
+</tbody>
+<tfoot><tr><th>Total</th><th>one thousand eight hundred and ninety-two point five</th><th>eight hundred and seventy-nine point nine</th></tr></tfoot>
+</table>
+
+<h1>Paginated table with custom settings</h1>
+<p>This table has the class &quot;<code>paginated</code>&quot; and a <code>data-paginate</code> attribute with the value
+"<code>{&amp;quot;navigationAbove&amp;quot; : true, &amp;quot;perPage&amp;quot; : 10}</code>" (a JSON object with escaped quotes), overwriting the default
+for the rows per page, and the position of the navigation.</p>
+<table class="paginated" data-paginate="{&quot;navigationAbove&quot; : true, &quot;perPage&quot; : 10}">
+<thead><tr><th>Number</th><th>Square</th><th>Cube</th></tr></thead>
+<tbody>
+<tr><td>one</td><td>one</td><td> one</td></tr>
+<tr><td>two</td><td>four</td><td> eight</td></tr>
+<tr><td>three</td><td>nine</td><td> twenty-seven</td></tr>
+<tr><td>four</td><td>sixteen</td><td> sixty-four</td></tr>
+<tr><td>five</td><td>twenty-five</td><td> one hundred and twenty-five</td></tr>
+<tr><td>six</td><td>thirty-six</td><td> two hundred and sixteen</td></tr>
+<tr><td>seven</td><td>fourty-nine</td><td> three hundred and fourty-three</td></tr>
+<tr><td>eight</td><td>sixty-four</td><td> five hundred and twelve</td></tr>
+<tr><td>nine</td><td>eighty-one</td><td> seven hundred and twenty-nine</td></tr>
+<tr><td>ten</td><td>one hundred</td><td> one thousand</td></tr>
+<tr><td>eleven</td><td>one hundred and twenty-one</td><td> one thousand three hundred and thirty-one</td></tr>
+<tr><td>twelve</td><td>one hundred and fourty-four</td><td> one thousand seven hundred and twenty-eight</td></tr>
+<tr><td>thirteen</td><td>one hundred and sixty-nine</td><td> two thousand one hundred and ninety-seven</td></tr>
+<tr><td>fourteen</td><td>one hundred and ninety-six</td><td> two thousand seven hundred and fourty-four</td></tr>
+<tr><td>fifteen</td><td>two hundred and twenty-five</td><td> three thousand three hundred and seventy-five</td></tr>
+<tr><td>sixteen</td><td>two hundred and fifty-six</td><td> four thousand ninety-six</td></tr>
+<tr><td>seventeen</td><td>two hundred and eighty-nine</td><td> four thousand nine hundred and thirteen</td></tr>
+<tr><td>eighteen</td><td>three hundred and twenty-four</td><td> five thousand eight hundred and thirty-two</td></tr>
+<tr><td>nineteen</td><td>three hundred and sixty-one</td><td> six thousand eight hundred and fifty-nine</td></tr>
+<tr><td>twenty</td><td>four hundred</td><td> eight thousand</td></tr>
+<tr><td>twenty-one</td><td>four hundred and fourty-one</td><td> nine thousand two hundred and sixty-one</td></tr>
+<tr><td>twenty-two</td><td>four hundred and eighty-four</td><td> ten thousand six hundred and fourty-eight</td></tr>
+<tr><td>twenty-three</td><td>five hundred and twenty-nine</td><td> twelve thousand one hundred and sixty-seven</td></tr>
+<tr><td>twenty-four</td><td>five hundred and seventy-six</td><td> thirteen thousand eight hundred and twenty-four</td></tr>
+<tr><td>twenty-five</td><td>six hundred and twenty-five</td><td> fifteen thousand six hundred and twenty-five</td></tr>
+</table>
+
+<h1>Table paginated after load</h1>
+<p>This table is not paginated on load, but only after the button is pressed. The button has the <code>onclick</code>
+event &quot;<code>paginate(document.querySelector('#t'), {perPage : 5})</code>&quot;:
+<p><button onclick="paginate(document.querySelector('#t'), {perPage : 5})">Paginate!</button></p>
+<table id="t">
+<thead><tr><th>Number</th><th>Power of two</th></tr></thead>
+<tbody>
+<tr><td>zero</td><td>one</td></tr>
+<tr><td>one</td><td>two</td></tr>
+<tr><td>two</td><td>four</td></tr>
+<tr><td>three</td><td>eight</td></tr>
+<tr><td>four</td><td>sixteen</td></tr>
+<tr><td>five</td><td>thirty-two</td></tr>
+<tr><td>six</td><td>sixty-four</td></tr>
+<tr><td>seven</td><td>one hundred and twenty-eight</td></tr>
+<tr><td>eight</td><td>two hundred and fifty-six</td></tr>
+<tr><td>nine</td><td>five hundred and twelve</td></tr>
+<tr><td>ten</td><td>one thousand twenty-four</td></tr>
+<tr><td>eleven</td><td>two thousand fourty-eight</td></tr>
+<tr><td>twelve</td><td>four thousand ninety-six</td></tr>
+<tr><td>thirteen</td><td>eight thousand one hundred and ninety-two</td></tr>
+<tr><td>fourteen</td><td>sixteen thousand three hundred and eighty-four</td></tr>
+<tr><td>fifteen</td><td>thirty-two thousand seven hundred and sixty-eight</td></tr>
+<tr><td>sixteen</td><td>sixty-five thousand five hundred and thirty-six</td></tr>
+<tr><td>seventeen</td><td>one hundred and thirty-one thousand seventy-two</td></tr>
+<tr><td>eighteen</td><td>two hundred and sixty-two thousand one hundred and fourty-four</td></tr>
+<tr><td>nineteen</td><td>five hundred and twenty-four thousand two hundred and eighty-eight</td></tr>
+</tbody>
+</table>
+</body>
+</html>
